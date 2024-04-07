@@ -1,0 +1,57 @@
+Loading checkpoint shards:   0%|          | 0/7 [00:00<?, ?it/s]Loading checkpoint shards:  14%|█▍        | 1/7 [00:00<00:03,  1.54it/s]Loading checkpoint shards:  29%|██▊       | 2/7 [00:01<00:03,  1.45it/s]Loading checkpoint shards:  43%|████▎     | 3/7 [00:02<00:02,  1.47it/s]Loading checkpoint shards:  57%|█████▋    | 4/7 [00:02<00:01,  1.51it/s]Loading checkpoint shards:  71%|███████▏  | 5/7 [00:03<00:01,  1.49it/s]Loading checkpoint shards:  86%|████████▌ | 6/7 [00:04<00:00,  1.50it/s]Loading checkpoint shards: 100%|██████████| 7/7 [00:04<00:00,  1.70it/s]Loading checkpoint shards: 100%|██████████| 7/7 [00:04<00:00,  1.57it/s]
+Exception in thread Thread-4 (_do_normal_analytics_request):
+Traceback (most recent call last):
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_transports/default.py", line 69, in map_httpcore_exceptions
+    yield
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_transports/default.py", line 233, in handle_request
+    resp = self._pool.handle_request(req)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 216, in handle_request
+    raise exc from None
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_sync/connection_pool.py", line 196, in handle_request
+    response = connection.handle_request(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 99, in handle_request
+    raise exc
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 76, in handle_request
+    stream = self._connect(request)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_sync/connection.py", line 122, in _connect
+    stream = self._network_backend.connect_tcp(**kwargs)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_backends/sync.py", line 205, in connect_tcp
+    with map_exceptions(exc_map):
+  File "/root/.conda/envs/chatglm/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectTimeout: timed out
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/root/.conda/envs/chatglm/lib/python3.10/threading.py", line 1009, in _bootstrap_inner
+    self.run()
+  File "/root/.conda/envs/chatglm/lib/python3.10/threading.py", line 946, in run
+    self._target(*self._args, **self._kwargs)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/gradio/analytics.py", line 61, in _do_normal_analytics_request
+    data["ip_address"] = get_local_ip_address()
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/gradio/analytics.py", line 117, in get_local_ip_address
+    ip_address = httpx.get(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_api.py", line 198, in get
+    return request(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_api.py", line 106, in request
+    return client.request(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_client.py", line 827, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_client.py", line 914, in send
+    response = self._send_handling_auth(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_client.py", line 1015, in _send_single_request
+    response = transport.handle_request(request)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_transports/default.py", line 232, in handle_request
+    with map_httpcore_exceptions():
+  File "/root/.conda/envs/chatglm/lib/python3.10/contextlib.py", line 153, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/root/.conda/envs/chatglm/lib/python3.10/site-packages/httpx/_transports/default.py", line 86, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectTimeout: timed out
